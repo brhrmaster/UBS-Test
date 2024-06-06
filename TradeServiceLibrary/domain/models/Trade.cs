@@ -1,6 +1,6 @@
 ﻿using TradeServiceLibrary.interfaces;
 
-namespace TradeServiceLibrary.model
+namespace TradeServiceLibrary.domain.models
 {
     public class Trade : ITrade
     {

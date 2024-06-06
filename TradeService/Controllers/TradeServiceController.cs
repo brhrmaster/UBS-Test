@@ -24,7 +24,7 @@ namespace TradeService.Controllers
             TradeAdapter tradeRiskAdapter = new TradeAdapter();
 
             return new JsonResult(
-                tradeRiskAdapter.GetPortfolioAnalisys(portfolio),
+                tradeRiskAdapter.GetPortfolioAnalysis(portfolio),
                 new JsonSerializerOptions { PropertyNamingPolicy = null }
             );
         }

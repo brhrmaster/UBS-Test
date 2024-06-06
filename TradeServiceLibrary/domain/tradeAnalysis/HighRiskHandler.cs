@@ -1,7 +1,7 @@
 ﻿using TradeServiceLibrary.enums;
 using TradeServiceLibrary.interfaces;
 
-namespace TradeServiceLibrary.model
+namespace TradeServiceLibrary.domain.tradeAnalysis
 {
     public class HighRiskHandler : TradeHandlerBase
     {

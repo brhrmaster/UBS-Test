@@ -1,15 +1,14 @@
 using ExpectedObjects;
 using TradeServiceLibrary.adapter;
+using TradeServiceLibrary.domain.models;
 using TradeServiceLibrary.interfaces;
-using TradeServiceLibrary.model;
 
 namespace TradeServiceTest
 {
     public class TradeServiceTest
     {
-
-        [Fact(DisplayName = "Should get trade analisys with valid values")]
-        public void ShouldGetTradeAnalisys()
+        [Fact(DisplayName = "Should get trade analysis with valid values")]
+        public void ShouldGetTradeAnalysis()
         {
             var expectedResult = new string[4]
             {
@@ -17,43 +16,80 @@ namespace TradeServiceTest
                 "LOWRISK",
                 "LOWRISK",
                 "MEDIUMRISK"
-            }.ToExpectedObject();
+            };
 
-            var trade1 = new Trade { Value = 2000000, ClientSector = "Private" };
-            var trade2 = new Trade { Value = 400000, ClientSector = "Public" };
-            var trade3 = new Trade { Value = 500000, ClientSector = "Public" };
-            var trade4 = new Trade { Value = 3000000, ClientSector = "Public" };
-
-            var portfolio = new List<ITrade> { trade1, trade2, trade3, trade4 };
+            var portfolio = new List<ITrade> {
+                new Trade { Value = 2000000, ClientSector = "Private" },
+                new Trade { Value = 400000, ClientSector = "Public" },
+                new Trade { Value = 500000, ClientSector = "Public" },
+                new Trade { Value = 3000000, ClientSector = "Public" }
+            };
 
             var adapter = new TradeAdapter();
-            var result = adapter.GetPortfolioAnalisys(portfolio);
+            var result = adapter.GetPortfolioAnalysis(portfolio);
 
-            expectedResult.Matches(result);
+            expectedResult.ToExpectedObject().ShouldEqual(result);
         }
 
-        [Fact(DisplayName = "Should get trade analisys with empty valid values")]
-        public void ShouldGetTradeAnalisysEmptyValues()
+        [Fact(DisplayName = "Should get trade analysis with some invalid values")]
+        public void ShouldGetTradeAnalysisSomeInvalidValues()
         {
             var expectedResult = new string[4]
             {
                 "HIGHRISK",
-                "",
+                "UNKNOWN",
                 "LOWRISK",
-                ""
-            }.ToExpectedObject();
+                "UNKNOWN"
+            };
 
-            var trade1 = new Trade { Value = 2000000, ClientSector = "Private" };
-            var trade2 = new Trade { Value = 1000000, ClientSector = "Private" };
-            var trade3 = new Trade { Value = 5000000, ClientSector = "Public" };
-            var trade4 = new Trade { Value = 500000, ClientSector = "Public" };
-
-            var portfolio = new List<ITrade> { trade1, trade2, trade3, trade4 };
+            var portfolio = new List<ITrade> {
+                new Trade { Value = 2000000, ClientSector = "Private" },
+                new Trade { Value = 1000000, ClientSector = "Private" },
+                new Trade { Value = 500000, ClientSector = "Public" },
+                new Trade { Value = 500000, ClientSector = "Private" }
+            };
 
             var adapter = new TradeAdapter();
-            var result = adapter.GetPortfolioAnalisys(portfolio);
+            var result = adapter.GetPortfolioAnalysis(portfolio);
 
-            expectedResult.Matches(result);
+            expectedResult.ToExpectedObject().ShouldEqual(result);
+        }
+
+        [Fact(DisplayName = "Should get trade analysis with empty list")]
+        public void ShouldGetTradeAnalysisEmptyList()
+        {
+            var expectedResult = new string[0]{ };
+
+            var portfolio = new List<ITrade> { };
+
+            var adapter = new TradeAdapter();
+            var result = adapter.GetPortfolioAnalysis(portfolio);
+
+            expectedResult.ToExpectedObject().ShouldEqual(result);
+        }
+
+        [Fact(DisplayName = "Should get trade analysis with all invalid values")]
+        public void ShouldGetTradeAnalysisAllInvalid()
+        {
+            var expectedResult = new string[4]
+            {
+                "UNKNOWN",
+                "UNKNOWN",
+                "UNKNOWN",
+                "UNKNOWN"
+            };
+
+            var portfolio = new List<ITrade> {
+                new Trade { Value = 20000, ClientSector = "Private" },
+                new Trade { Value = 1000000, ClientSector = "Public" },
+                new Trade { Value = 100000, ClientSector = "Private" },
+                new Trade { Value = 1000, ClientSector = "Private" }
+            };
+
+            var adapter = new TradeAdapter();
+            var result = adapter.GetPortfolioAnalysis(portfolio);
+
+            expectedResult.ToExpectedObject().ShouldEqual(result);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using TradeServiceLibrary.interfaces;
+﻿using TradeServiceLibrary.exception;
+using TradeServiceLibrary.interfaces;
 
-namespace TradeServiceLibrary.model
+namespace TradeServiceLibrary.domain.tradeAnalysis
 {
     public abstract class TradeHandlerBase : ITradeHandler
     {
@@ -24,12 +25,23 @@ namespace TradeServiceLibrary.model
 
         protected string GetNextHandlerValue(ITrade request)
         {
-            return next != null ? next.Handle(request) : "";
+            return next != null ? next.Handle(request) : throw new UnknownException("UNKNOWN");
         }
 
         protected string Evaluate(bool isValidSector, bool isValidValue, string actualRisk, ITrade request)
         {
-            return isValidSector && isValidValue ? actualRisk : GetNextHandlerValue(request);
+            try
+            {
+                return isValidSector && isValidValue ? actualRisk : GetNextHandlerValue(request);
+            }
+            catch (UnknownException ue)
+            {
+                return ue.Message;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
         }
     }
 }

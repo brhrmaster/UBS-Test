@@ -1,5 +1,5 @@
-﻿using TradeServiceLibrary.interfaces;
-using TradeServiceLibrary.model;
+﻿using TradeServiceLibrary.domain.tradeAnalysis;
+using TradeServiceLibrary.interfaces;
 
 namespace TradeServiceLibrary.adapter
 {
@@ -10,7 +10,7 @@ namespace TradeServiceLibrary.adapter
         /// </summary>
         /// <param name="portfolio"></param>
         /// <returns>List of trade categories based on portfolio</returns>
-        public string[] GetPortfolioAnalisys(List<ITrade> portfolio)
+        public string[] GetPortfolioAnalysis(List<ITrade> portfolio)
         {
             var results = new List<string>();
 
