@@ -16,4 +16,8 @@ tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 ```
 
 ## Chain of responsability class design
-![alt diagram](image.png)
+![alt diagram](docs/domain.png)
+
+
+## (T-SQL) DB output
+![alt diagram](docs/db-output.png)
