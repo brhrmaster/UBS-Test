@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeServiceTest", "TradeServiceTest\TradeServiceTest.csproj", "{7122D532-BE21-45BB-87AF-458D87947BA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeCategoryTest", "TradeCategoryTest\TradeCategoryTest.csproj", "{7122D532-BE21-45BB-87AF-458D87947BA0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeServiceConsole", "TradeServiceConsole\TradeServiceConsole.csproj", "{48A948EF-5CE5-43A9-868D-7D3E0821276F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeCategoryConsole", "TradeCategoryConsole\TradeCategoryConsole.csproj", "{48A948EF-5CE5-43A9-868D-7D3E0821276F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeServiceLibrary", "TradeServiceLibrary\TradeServiceLibrary.csproj", "{0E7DE98F-8E11-402D-8A5C-E594B71BC45B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeCategoryLibrary", "TradeCategoryLibrary\TradeCategoryLibrary.csproj", "{0E7DE98F-8E11-402D-8A5C-E594B71BC45B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

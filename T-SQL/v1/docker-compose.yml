@@ -23,6 +23,6 @@ services:
       - ./01-create-tables.sql:/tmp/01-create-tables.sql
       - ./02-insert-data.sql:/tmp/02-insert-data.sql
       - ./03-create-procedures-v2.sql:/tmp/03-create-procedures-v1.sql
-      - ./04-create-procedures-v2.sql:/tmp/04-create-procedures-v1.sql
+      - ./04-create-procedures-v2.sql:/tmp/04-create-procedures-v2.sql
       - ./init-ubs-test.sh:/tmp/init-ubs-test.sh
     command: /bin/bash ./tmp/init-ubs-test.sh
