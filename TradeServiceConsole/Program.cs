@@ -1,14 +1,16 @@
-﻿using TradeServiceLibrary.adapter;
+﻿using System.Text;
+using TradeServiceLibrary.adapter;
 using TradeServiceLibrary.domain.models;
 using TradeServiceLibrary.interfaces;
 
 class Program
 {
+    private static string FormatNumber(double value) => string.Format("{0:N}", value);
+
     public static void Main()
     {
-        Console.WriteLine("###### TRADE RISK ANALYSIS ######");
+        #region Input Config
 
-        // input configuration
         var portfolio = new List<ITrade> {
             new Trade { Value = 2000000, ClientSector = "Private" },
             new Trade { Value = 400000, ClientSector = "Public" },
@@ -18,22 +20,49 @@ class Program
             new Trade { Value = 1000000, ClientSector = "Private" }
         };
 
-        Console.WriteLine("\n:: INPUT DATA ::");
+        #endregion
+
+        #region Operation
+
+        var tradeCategories = new TradeAdapter().GetTradeCategories(portfolio);
+
+        #endregion
+
+        #region Prepare Data for view
+
+        List<string> output = new List<string>();
+
+        output.Add("###### TRADE RISK ANALYSIS ######");
+        output.Add("\n:: INPUT DATA ::");
 
         foreach (var trade in portfolio)
         {
-            Console.WriteLine("Value: {0:C} - Sector: {1}", trade.Value, trade.ClientSector);
+            output.Add("Value: " + FormatNumber(trade.Value) + " - Sector: " + trade.ClientSector);
         }
 
-        var analysisResults = new TradeAdapter().GetPortfolioAnalysis(portfolio);
+        output.Add("\n:: RESULTS ::");
 
-        Console.WriteLine("\n:: RESULTS ::");
+        output.Add(string.Join(", ", tradeCategories));
 
-        foreach (var (result, index) in analysisResults.Select((result, index) => (result, index)))
+        output.Add("\n:: RESULTS (related) ::");
+
+        foreach (var (result, index) in tradeCategories.Select((result, index) => (result, index)))
         {
-            var currentTrade = portfolio[index];
-            Console.WriteLine("Value: {0:C} - Sector: {1} >> {2}", currentTrade.Value, currentTrade.ClientSector, result);
+            var trade = portfolio[index];
+
+            output.Add("Value: " + FormatNumber(trade.Value) + " - Sector: " + trade.ClientSector + " >> " + result);
         }
+
+        #endregion
+
+        #region Console View
+
+        foreach (var text in output)
+        {
+            Console.WriteLine(text);
+        }
+
+        #endregion
     }
 }
 

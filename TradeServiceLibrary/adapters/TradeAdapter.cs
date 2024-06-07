@@ -10,7 +10,7 @@ namespace TradeServiceLibrary.adapter
         /// </summary>
         /// <param name="portfolio"></param>
         /// <returns>List of trade categories based on portfolio</returns>
-        public string[] GetPortfolioAnalysis(List<ITrade> portfolio)
+        public string[] GetTradeCategories(List<ITrade> portfolio)
         {
             var results = new List<string>();
 

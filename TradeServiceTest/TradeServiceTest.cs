@@ -10,7 +10,7 @@ namespace TradeServiceTest
         [Fact(DisplayName = "Should get trade analysis with valid values")]
         public void ShouldGetTradeAnalysis()
         {
-            var expectedResult = new string[4]
+            var expectedTradeCategories = new string[4]
             {
                 "HIGHRISK",
                 "LOWRISK",
@@ -26,15 +26,15 @@ namespace TradeServiceTest
             };
 
             var adapter = new TradeAdapter();
-            var result = adapter.GetPortfolioAnalysis(portfolio);
+            var tradeCategories = adapter.GetTradeCategories(portfolio);
 
-            expectedResult.ToExpectedObject().ShouldEqual(result);
+            expectedTradeCategories.ToExpectedObject().ShouldEqual(tradeCategories);
         }
 
         [Fact(DisplayName = "Should get trade analysis with some invalid values")]
         public void ShouldGetTradeAnalysisSomeInvalidValues()
         {
-            var expectedResult = new string[4]
+            var expectedTradeCategories = new string[4]
             {
                 "HIGHRISK",
                 "UNKNOWN",
@@ -50,28 +50,28 @@ namespace TradeServiceTest
             };
 
             var adapter = new TradeAdapter();
-            var result = adapter.GetPortfolioAnalysis(portfolio);
+            var tradeCategories = adapter.GetTradeCategories(portfolio);
 
-            expectedResult.ToExpectedObject().ShouldEqual(result);
+            expectedTradeCategories.ToExpectedObject().ShouldEqual(tradeCategories);
         }
 
         [Fact(DisplayName = "Should get trade analysis with empty list")]
         public void ShouldGetTradeAnalysisEmptyList()
         {
-            var expectedResult = new string[0]{ };
+            var expectedTradeCategories = new string[0]{ };
 
             var portfolio = new List<ITrade> { };
 
             var adapter = new TradeAdapter();
-            var result = adapter.GetPortfolioAnalysis(portfolio);
+            var tradeCategories = adapter.GetTradeCategories(portfolio);
 
-            expectedResult.ToExpectedObject().ShouldEqual(result);
+            expectedTradeCategories.ToExpectedObject().ShouldEqual(tradeCategories);
         }
 
         [Fact(DisplayName = "Should get trade analysis with all invalid values")]
         public void ShouldGetTradeAnalysisAllInvalid()
         {
-            var expectedResult = new string[4]
+            var expectedTradeCategories = new string[4]
             {
                 "UNKNOWN",
                 "UNKNOWN",
@@ -87,9 +87,9 @@ namespace TradeServiceTest
             };
 
             var adapter = new TradeAdapter();
-            var result = adapter.GetPortfolioAnalysis(portfolio);
+            var tradeCategories = adapter.GetTradeCategories(portfolio);
 
-            expectedResult.ToExpectedObject().ShouldEqual(result);
+            expectedTradeCategories.ToExpectedObject().ShouldEqual(tradeCategories);
         }
     }
 }
