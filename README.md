@@ -15,8 +15,8 @@ Output:
 tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 ```
 
-## Chain of responsability class design
-![alt diagram](docs/domain.png)
+## Domain Design
+![alt diagram](docs/class-domain.png)
 
 
 ## (T-SQL) DB output
