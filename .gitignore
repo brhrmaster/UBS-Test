@@ -393,6 +393,10 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+*.bin
 
 # JetBrains Rider
 *.sln.iml
+
+# docker mssql volumes
+mssql_volume/(data|log|secrets)/(?!.placeholder)([a-zA-Z0-9|.|-]+)

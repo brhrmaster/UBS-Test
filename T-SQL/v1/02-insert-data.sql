@@ -1,4 +1,4 @@
-USE UBS_AG
+USE UBS_AG_v1
 GO
 
 INSERT INTO dbo.tbl_sectors(name)

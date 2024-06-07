@@ -1,6 +1,7 @@
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_db
     environment:
       MSSQL_SA_PASSWORD: "SqlServerTest!"
       ACCEPT_EULA: "Y"
@@ -15,6 +16,7 @@ services:
       - default
   mssqltools:
     image: mcr.microsoft.com/mssql-tools:latest
+    container_name: mssql_tool
     depends_on:
       - sqlserver
     volumes:

@@ -1,4 +1,4 @@
-USE UBS_AG
+USE UBS_AG_v1
 GO
 
 CREATE FUNCTION dbo.get_trade_category(@value INT, @sector INT)

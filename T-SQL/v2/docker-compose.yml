@@ -1,0 +1,26 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_db
+    environment:
+      MSSQL_SA_PASSWORD: "SqlServerTest!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    volumes:
+      - ./mssql_volume/data:/var/opt/mssql/data
+      - ./mssql_volume/log:/var/opt/mssql/log
+      - ./mssql_volume/secrets:/var/opt/mssql/secrets
+    ports:
+      - "1433:1433"
+    networks:
+      - default
+  mssqltools:
+    image: mcr.microsoft.com/mssql-tools:latest
+    container_name: mssql_tool
+    depends_on:
+      - sqlserver
+    volumes:
+      - ./01-create-tables.sql:/tmp/01-create-tables.sql
+      - ./02-create-procedures.sql:/tmp/02-create-procedures.sql
+      - ./init-ubs-test.sh:/tmp/init-ubs-test.sh
+    command: /bin/bash ./tmp/init-ubs-test.sh
