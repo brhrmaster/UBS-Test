@@ -19,5 +19,28 @@ tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 ![alt diagram](docs/class-domain.png)
 
 
+## (T-SQL) Execution:
+
+# Option 1
+ run via docker (compose)
+
+ enter T-SQL folder and execute command:
+```
+docker-compose up -d
+```
+then open Azure Data Studio to execute the procedures
+
+```
+EXEC dbo.insert_all_trades
+EXEC dbo.show_all_trades
+EXEC dbo.process_trade_categories
+EXEC dbo.show_output
+EXEC dbo.show_output 1
+```
+
+OR
+
+Use the file "T-SQL\database-create.sql" to create, configure and run procedures
+
 ## (T-SQL) DB output
 ![alt diagram](docs/db-output.png)
