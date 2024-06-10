@@ -15,9 +15,19 @@ Output:
 tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 ```
 
+## Preview
+
+Console application output
+![alt console](docs/console-output.png)
+
+Unit Tests
+![alt unittests](docs/test-results.png)
+
+Database
+![alt database](docs/db-output.png)
+
 ## Domain Design
 ![alt diagram](docs/class-domain.png)
-
 
 ## (T-SQL) Execution:
 
@@ -42,5 +52,3 @@ EXEC dbo.show_output 1
 
 Execute SQL commands from file "T-SQL\database-create.sql" to create, configure and run procedures.
 
-## (T-SQL) DB output
-![alt diagram](docs/db-output.png)
