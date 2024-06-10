@@ -17,13 +17,13 @@ tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 
 ## Preview
 
-Console application output
+### Console application output
 ![alt console](docs/console-output.png)
 
-Unit Tests
+### Unit Tests
 ![alt unittests](docs/test-results.png)
 
-Database
+### Database
 ![alt database](docs/db-output.png)
 
 ## Domain Design
