@@ -21,7 +21,7 @@ tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 
 ## (T-SQL) Execution:
 
-# Option 1
+### Option 1
  run via docker (compose)
 
  enter T-SQL folder and execute command:
@@ -38,9 +38,9 @@ EXEC dbo.show_output
 EXEC dbo.show_output 1
 ```
 
-OR
+### Option 2
 
-Use the file "T-SQL\database-create.sql" to create, configure and run procedures
+Execute SQL commands from file "T-SQL\database-create.sql" to create, configure and run procedures.
 
 ## (T-SQL) DB output
 ![alt diagram](docs/db-output.png)
