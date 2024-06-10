@@ -34,9 +34,13 @@ tradeCategories = {"HIGHRISK", "LOWRISK", "LOWRISK", "MEDIUMRISK"}
 ### Option 1
  run via docker (compose)
 
- enter T-SQL folder and execute command:
+ enter T-SQL folder and execute command*:
 ```
 docker-compose up -d
+```
+* make sure docker has access to the volume folder by running:
+```
+sudo chown 10001 -R ./mssql_volume
 ```
 then open Azure Data Studio to execute the procedures
 
