@@ -5,6 +5,21 @@ namespace TradeServiceLibrary.adapter
 {
     public class TradeAdapter
     {
+        private ITradeHandler tradeHandler;
+
+        public TradeAdapter()
+        {
+            setupTradeCategoryChain();
+        }
+
+
+        private void setupTradeCategoryChain()
+        {
+            tradeHandler = new HighRiskHandler()
+                .SetNext(new MediumRiskHandler())
+                .SetNext(new LowRiskHandler());
+        }
+
         /// <summary>
         /// Checks the client trade portfolio
         /// </summary>
@@ -14,13 +29,9 @@ namespace TradeServiceLibrary.adapter
         {
             var results = new List<string>();
 
-            var handler = new HighRiskHandler()
-                .SetNext(new MediumRiskHandler())
-                .SetNext(new LowRiskHandler());
-
             foreach (var trade in portfolio)
             {
-                results.Add(handler.Handle(trade));
+                results.Add(tradeHandler.Handle(trade));
             }
 
             return results.ToArray();
