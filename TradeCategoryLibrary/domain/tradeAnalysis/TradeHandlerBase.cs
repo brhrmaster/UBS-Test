@@ -1,4 +1,5 @@
-﻿using TradeServiceLibrary.exception;
+﻿using TradeServiceLibrary.enums;
+using TradeServiceLibrary.exception;
 using TradeServiceLibrary.interfaces;
 
 namespace TradeServiceLibrary.domain.tradeAnalysis
@@ -6,6 +7,14 @@ namespace TradeServiceLibrary.domain.tradeAnalysis
     public abstract class TradeHandlerBase : ITradeHandler
     {
         private ITradeHandler next;
+        private RiskType riskType;
+
+        public TradeHandlerBase(RiskType riskType)
+        {
+            this.riskType = riskType;
+        }
+
+        protected RiskType RiskType { get { return riskType; } }
 
         public abstract string Handle(ITrade request);
 
